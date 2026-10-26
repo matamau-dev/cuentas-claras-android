@@ -2,6 +2,7 @@ package com.matamau.cuentasclaras.feature.group.presentation.detail.components.e
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,6 +32,7 @@ fun ExpenseItem(
     subtitle: String,
     amount: Double,
     splitInfo: String,
+    onExpenseDetail: () -> Unit,
 ) {
     val isPositive = amount >= 0
     val amountColor =
@@ -47,10 +49,13 @@ fun ExpenseItem(
 
     val sign = if (isPositive) "+" else "-"
 
-    Row (
+    Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(AppTheme.spacing.lg),
+            .padding(AppTheme.spacing.lg)
+            .clickable {
+                onExpenseDetail()
+            },
         horizontalArrangement = Arrangement.spacedBy(AppTheme.spacing.md),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -76,7 +81,7 @@ fun ExpenseItem(
             )
         }
 
-        Column (
+        Column(
             horizontalAlignment = Alignment.End,
         ) {
             Text(
@@ -112,7 +117,7 @@ private fun DateBadge(
             ),
         contentAlignment = Alignment.Center,
     ) {
-        Column (
+        Column(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(
