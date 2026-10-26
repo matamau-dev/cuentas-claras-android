@@ -13,12 +13,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.matamau.cuentasclaras.core.designsystem.components.appbar.AppBottomBar
+import com.matamau.cuentasclaras.core.designsystem.components.appbar.DetailTopBar
 import com.matamau.cuentasclaras.core.designsystem.components.buttons.AppSegmentedControl
 import com.matamau.cuentasclaras.core.designsystem.components.buttons.SegmentedOption
 import com.matamau.cuentasclaras.core.designsystem.components.card.AppCard
 import com.matamau.cuentasclaras.core.designsystem.theme.AppTheme
 import com.matamau.cuentasclaras.core.navigation.Routes
-import com.matamau.cuentasclaras.core.designsystem.components.appbar.DetailTopBar
 import com.matamau.cuentasclaras.feature.group.presentation.detail.components.EmptyExpensesState
 import com.matamau.cuentasclaras.feature.group.presentation.detail.components.GroupBalanceContent
 import com.matamau.cuentasclaras.feature.group.presentation.detail.components.GroupExpensesContent
@@ -26,21 +26,22 @@ import com.matamau.cuentasclaras.feature.group.presentation.detail.components.Gr
 
 
 @Composable
-fun GroupGroupDetailScreen(
+fun GroupDetailScreen(
     onBackClick: () -> Unit,
     onAddExpense: () -> Unit,
     onNavigate: (Routes) -> Unit,
     onCreateGroup: () -> Unit,
+    onExpenseDetail: () -> Unit
 ) {
     var detailTab by remember { mutableIntStateOf(0) }
-    val expenses = remember { emptyList<String>() }
+//    val expenses = remember { emptyList<String>() }
+    val expenses = remember { listOf("Renta") }
     val avatarGroup = listOf("TÚ", "MP", "JR", "DC", "LM", "SG")
 
     Scaffold(
         topBar = {
             DetailTopBar(
-                onBackClick = onBackClick,
-                titleText = null
+                onBackClick = onBackClick, titleText = null
             )
         },
         bottomBar = {
@@ -95,7 +96,7 @@ fun GroupGroupDetailScreen(
                 }
 
                 detailTab == 0 -> {
-                    item { GroupExpensesContent() }
+                    item { GroupExpensesContent(onExpenseDetail) }
                 }
 
                 detailTab == 1 -> {
