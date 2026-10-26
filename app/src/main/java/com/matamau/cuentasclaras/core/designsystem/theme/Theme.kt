@@ -51,7 +51,7 @@ val AppMaterialTypography = Typography(
     displayMedium = AppTypography.displayLg,
     displaySmall = AppTypography.displayMd,
     headlineLarge = AppTypography.headingLg,
-    headlineMedium = AppTypography.headingLg,
+    headlineMedium = AppTypography.headingMd,
     headlineSmall = AppTypography.headingLg,
     titleLarge = AppTypography.headingLg,
     titleMedium = AppTypography.bodyLg,
@@ -64,7 +64,7 @@ val AppMaterialTypography = Typography(
     labelSmall = AppTypography.microCap,
 
 
-)
+    )
 
 // 2. CompositionLocals
 private val LocalAppSpacing = staticCompositionLocalOf { AppSpacing }
