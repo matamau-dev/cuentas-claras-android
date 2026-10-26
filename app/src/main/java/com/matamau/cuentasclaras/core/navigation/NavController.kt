@@ -27,3 +27,7 @@ fun NavController.navigateToTab(route: Routes) {
 fun NavController.navigateToCreateGroup() {
     navigate(Routes.CreateGroup)
 }
+
+fun NavController.navigateToExpenseDetail(){
+    navigate(Routes.ExpenseDetail)
+}
