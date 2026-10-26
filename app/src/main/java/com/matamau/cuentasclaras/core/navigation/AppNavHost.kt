@@ -8,9 +8,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.matamau.cuentasclaras.feature.auth.presentation.auth.AuthScreen
-import com.matamau.cuentasclaras.feature.group.presentation.detail.GroupGroupDetailScreen
 import com.matamau.cuentasclaras.feature.expense.presentation.create.CreateExpenseScreen
+import com.matamau.cuentasclaras.feature.expense.presentation.detail.ExpenseDetail
 import com.matamau.cuentasclaras.feature.group.presentation.create.CreateGroupScreen
+import com.matamau.cuentasclaras.feature.group.presentation.detail.GroupDetailScreen
 import com.matamau.cuentasclaras.feature.home.presentation.HomeScreen
 import com.matamau.cuentasclaras.feature.profile.presentation.ProfileScreen
 
@@ -21,7 +22,7 @@ fun AppNavHost(modifier: Modifier = Modifier) {
 
     NavHost(
         navController = navController,
-        startDestination = Routes.Auth,
+        startDestination = Routes.ExpenseDetail,
         modifier = modifier.fillMaxSize(),
     ) {
         composable<Routes.Auth> {
@@ -44,7 +45,7 @@ fun AppNavHost(modifier: Modifier = Modifier) {
         }
 
         composable<Routes.Detail> {
-            GroupGroupDetailScreen (
+            GroupDetailScreen(
                 onBackClick = { navController.navigateUp() },
                 onNavigate = { destination ->
                     navController.navigateToTab(route = destination)
@@ -54,6 +55,9 @@ fun AppNavHost(modifier: Modifier = Modifier) {
                 },
                 onCreateGroup = {
                     navController.navigateToCreateGroup()
+                },
+                onExpenseDetail = {
+                    navController.navigateToExpenseDetail()
                 },
             )
         }
@@ -77,6 +81,12 @@ fun AppNavHost(modifier: Modifier = Modifier) {
                 onAddExpense = {
                     navController.navigateToExpense()
                 },
+            )
+        }
+
+        composable<Routes.ExpenseDetail> {
+            ExpenseDetail(
+                onBackClick = { navController.navigateToDetails() }
             )
         }
     }
