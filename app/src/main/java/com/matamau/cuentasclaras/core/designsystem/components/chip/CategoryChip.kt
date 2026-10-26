@@ -14,14 +14,14 @@ import com.matamau.cuentasclaras.core.designsystem.theme.CuentasClarasTheme
 
 @Composable
 fun CategoryChip(
+    modifier: Modifier = Modifier,
     label: String,
     selected: Boolean,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null,
 ) {
     FilterChip(
         selected = selected,
-        onClick = onClick,
+        onClick = onClick ?: {},
         modifier = modifier.height(32.dp),
         label = {
             Text(
