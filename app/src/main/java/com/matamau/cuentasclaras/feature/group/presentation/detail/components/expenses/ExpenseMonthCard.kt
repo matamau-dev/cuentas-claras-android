@@ -10,7 +10,9 @@ import com.matamau.cuentasclaras.core.designsystem.components.card.AppElevatedCa
 import com.matamau.cuentasclaras.core.designsystem.theme.AppTheme
 
 @Composable
-fun ExpenseList() {
+fun ExpenseList(
+    onExpenseDetail: () -> Unit,
+) {
     AppElevatedCard(modifier = Modifier.fillMaxWidth()) {
         Column {
             ExpenseItem(
@@ -20,6 +22,7 @@ fun ExpenseList() {
                 subtitle = "Pagaste tú • $18,400.00",
                 amount = 13800.00,
                 splitInfo = "entre 4",
+                onExpenseDetail = onExpenseDetail,
             )
 
             HorizontalDivider(
@@ -28,12 +31,13 @@ fun ExpenseList() {
             )
 
             ExpenseItem(
-                month = "Mar",
+                month = "Abr",
                 day = "1",
-                title = "Renta marzo",
-                subtitle = "Pagaste tú • $18,400.00",
-                amount = 13800.00,
+                title = "Agua",
+                subtitle = "Pagaste tú • $950.75",
+                amount = 950.75,
                 splitInfo = "entre 4",
+                onExpenseDetail = onExpenseDetail,
             )
 
             HorizontalDivider(
@@ -48,6 +52,7 @@ fun ExpenseList() {
                 subtitle = "Pagó María • $1,620.00",
                 amount = -595.10,
                 splitInfo = "entre 4",
+                onExpenseDetail = onExpenseDetail,
             )
         }
     }
