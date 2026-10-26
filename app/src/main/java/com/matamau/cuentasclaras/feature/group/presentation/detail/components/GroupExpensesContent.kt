@@ -10,8 +10,10 @@ import com.matamau.cuentasclaras.feature.group.presentation.detail.components.ex
 
 
 @Composable
-fun GroupExpensesContent() {
-    Column (
+fun GroupExpensesContent(
+    onExpenseDetail: () -> Unit
+) {
+    Column(
         verticalArrangement = Arrangement.spacedBy(
             AppTheme.spacing.lg,
         ),
@@ -24,6 +26,6 @@ fun GroupExpensesContent() {
             color = AppTheme.colors.onSurfaceVariant,
         )
 
-        ExpenseList()
+        ExpenseList(onExpenseDetail)
     }
 }
