@@ -32,6 +32,12 @@ object AppTypography {
         fontWeight = FontWeight.Bold,
         lineHeight = 31.92.sp
     )
+    val headingMd = TextStyle(
+        fontFamily = Montserrat,
+        fontSize = 20.sp,
+        fontWeight = FontWeight.Bold,
+        lineHeight = 31.92.sp
+    )
     val bodyLg = TextStyle(
         fontFamily = Montserrat,
         fontSize = 18.sp,
