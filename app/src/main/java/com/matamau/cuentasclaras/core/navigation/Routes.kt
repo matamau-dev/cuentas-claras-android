@@ -24,4 +24,7 @@ sealed interface Routes {
     @Serializable
     data object CreateGroup {
     }
+
+    @Serializable
+    data object ExpenseDetail
 }
