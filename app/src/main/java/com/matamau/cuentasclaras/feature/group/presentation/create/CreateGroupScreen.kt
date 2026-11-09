@@ -1,5 +1,7 @@
 package com.matamau.cuentasclaras.feature.group.presentation.create
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,6 +21,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusManager
+import androidx.compose.ui.platform.LocalFocusManager
 import com.matamau.cuentasclaras.core.designsystem.components.appbar.DetailTopBar
 import com.matamau.cuentasclaras.core.designsystem.components.buttons.ButtonPrimary
 import com.matamau.cuentasclaras.core.designsystem.components.card.AppCard
@@ -35,6 +39,8 @@ fun CreateGroupScreen(
     onBackClick: () -> Unit,
     onAddExpense: () -> Unit,
 ) {
+    val focusManager: FocusManager = LocalFocusManager.current
+
     var name by remember { mutableStateOf("") }
     var groupType by remember { mutableStateOf<String?>(null) }
     val groupTypes = remember {
@@ -64,7 +70,15 @@ fun CreateGroupScreen(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding),
+                .padding(innerPadding)
+                .clickable(
+                    indication = null,
+                    interactionSource = remember {
+                        MutableInteractionSource()
+                    }
+                ) {
+                    focusManager.clearFocus()
+                },
             contentPadding = PaddingValues(AppTheme.spacing.xl),
             verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.xl),
         ) {
