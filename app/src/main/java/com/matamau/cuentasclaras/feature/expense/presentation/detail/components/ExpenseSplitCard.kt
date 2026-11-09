@@ -27,7 +27,8 @@ import com.matamau.cuentasclaras.core.designsystem.theme.AppTheme
 enum class PaymentStatus {
     PAYER,
     PAID,
-    PENDING
+    PENDING,
+    AwaitingConfirmation
 }
 
 data class ExpenseParticipantUi(
@@ -41,6 +42,7 @@ data class ExpenseParticipantUi(
             PaymentStatus.PAYER -> "Pagó"
             PaymentStatus.PAID -> "Pagado ✓"
             PaymentStatus.PENDING -> "Pendiente"
+            PaymentStatus.AwaitingConfirmation -> "Espera Confirmacion "
         }
 }
 
@@ -105,7 +107,7 @@ fun ExpenseSplitCard(
 @Composable
 private fun ExpenseParticipantRow(participant: ExpenseParticipantUi) {
     val statusColor = paymentStatusColor(participant.paymentStatus)
-    
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -185,6 +187,7 @@ private fun paymentStatusColor(
         PaymentStatus.PAYER -> AppTheme.colors.primary
         PaymentStatus.PAID -> AppColorsSemantic.Success
         PaymentStatus.PENDING -> AppColorsSemantic.Attention
+        PaymentStatus.AwaitingConfirmation -> AppTheme.colors.secondary
     }
 }
 
