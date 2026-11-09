@@ -60,7 +60,6 @@ fun ExpenseDetail(
                     expenseDate = "1 de marzo",
                     dueDate = "1 de abril",
                     recurrence = "Cada mes",
-                    receipt = "Ver recibo",
                 )
             }
 
@@ -78,7 +77,7 @@ fun ExpenseDetail(
                             initials = "TÚ",
                             name = "Tú",
                             amount = "$4,600.00",
-                            paymentStatus = PaymentStatus.PENDING
+                            paymentStatus = PaymentStatus.AwaitingConfirmation
                         ),
                         ExpenseParticipantUi(
                             initials = "JN",
