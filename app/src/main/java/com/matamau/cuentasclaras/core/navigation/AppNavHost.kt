@@ -22,7 +22,7 @@ fun AppNavHost(modifier: Modifier = Modifier) {
 
     NavHost(
         navController = navController,
-        startDestination = Routes.ExpenseDetail,
+        startDestination = Routes.Auth,
         modifier = modifier.fillMaxSize(),
     ) {
         composable<Routes.Auth> {
