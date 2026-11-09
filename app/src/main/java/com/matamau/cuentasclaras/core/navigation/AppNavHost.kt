@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.matamau.cuentasclaras.feature.auth.presentation.auth.AuthScreen
+import com.matamau.cuentasclaras.feature.auth.presentation.AuthScreen
 import com.matamau.cuentasclaras.feature.expense.presentation.create.CreateExpenseScreen
 import com.matamau.cuentasclaras.feature.expense.presentation.detail.ExpenseDetail
 import com.matamau.cuentasclaras.feature.group.presentation.create.CreateGroupScreen
