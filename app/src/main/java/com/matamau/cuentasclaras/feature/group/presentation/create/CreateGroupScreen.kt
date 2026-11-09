@@ -19,6 +19,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.matamau.cuentasclaras.core.designsystem.components.appbar.DetailTopBar
 import com.matamau.cuentasclaras.core.designsystem.components.buttons.ButtonPrimary
 import com.matamau.cuentasclaras.core.designsystem.components.card.AppCard
 import com.matamau.cuentasclaras.core.designsystem.components.card.AppOutlinedCard
@@ -27,7 +28,6 @@ import com.matamau.cuentasclaras.core.designsystem.components.chip.InviteChip
 import com.matamau.cuentasclaras.core.designsystem.components.field.InputText
 import com.matamau.cuentasclaras.core.designsystem.components.sheet.CategorySheet
 import com.matamau.cuentasclaras.core.designsystem.theme.AppTheme
-import com.matamau.cuentasclaras.core.designsystem.components.appbar.DetailTopBar
 import com.matamau.cuentasclaras.feature.expense.presentation.create.components.common.PersonChip
 
 @Composable
@@ -54,7 +54,6 @@ fun CreateGroupScreen(
                     println("Crear grupo: $name, $groupType, $members")
                     onAddExpense()
                 },
-                enabled = name.isNotBlank() && groupType != null,
                 modifier = Modifier
                     .fillMaxWidth()
                     .navigationBarsPadding()
