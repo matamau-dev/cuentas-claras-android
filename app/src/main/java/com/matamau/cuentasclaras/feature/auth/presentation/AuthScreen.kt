@@ -1,4 +1,4 @@
-package com.matamau.cuentasclaras.feature.auth.presentation.auth
+package com.matamau.cuentasclaras.feature.auth.presentation
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -30,8 +30,8 @@ import com.matamau.cuentasclaras.core.designsystem.components.buttons.ButtonSeco
 import com.matamau.cuentasclaras.core.designsystem.components.buttons.SegmentedOption
 import com.matamau.cuentasclaras.core.designsystem.components.card.AppElevatedCard
 import com.matamau.cuentasclaras.core.designsystem.theme.AppTheme
-import com.matamau.cuentasclaras.feature.login.presentation.LoginScreen
-import com.matamau.cuentasclaras.feature.register.presentation.RegisterScreen
+import com.matamau.cuentasclaras.feature.auth.presentation.components.LoginScreen
+import com.matamau.cuentasclaras.feature.auth.presentation.components.RegisterScreen
 
 @Composable
 fun AuthScreen(
