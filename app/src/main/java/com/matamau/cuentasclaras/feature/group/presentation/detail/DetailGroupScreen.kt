@@ -5,6 +5,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -14,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.matamau.cuentasclaras.core.designsystem.components.appbar.AppBottomBar
 import com.matamau.cuentasclaras.core.designsystem.components.appbar.DetailTopBar
+import com.matamau.cuentasclaras.core.designsystem.components.appbar.DetailTopBarMenuItem
 import com.matamau.cuentasclaras.core.designsystem.components.buttons.AppSegmentedControl
 import com.matamau.cuentasclaras.core.designsystem.components.buttons.SegmentedOption
 import com.matamau.cuentasclaras.core.designsystem.components.card.AppCard
@@ -41,7 +45,23 @@ fun GroupDetailScreen(
     Scaffold(
         topBar = {
             DetailTopBar(
-                onBackClick = onBackClick, titleText = null
+                onBackClick = onBackClick,
+                titleText = null,
+                menuItems = listOf(
+                    DetailTopBarMenuItem(
+                        title = "Editar gasto",
+                        icon = Icons.Default.Edit,
+                        onClick = {
+                            // Abrir modal de edición
+                        }
+                    ),
+                    DetailTopBarMenuItem(
+                        title = "Eliminar gasto",
+                        icon = Icons.Default.Delete,
+                        isDestructive = true,
+                        onClick = {}
+                    )
+                )
             )
         },
         bottomBar = {
