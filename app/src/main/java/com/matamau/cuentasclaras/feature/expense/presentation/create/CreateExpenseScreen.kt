@@ -21,22 +21,24 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import com.matamau.cuentasclaras.core.designsystem.component.field.SelectField
+import com.matamau.cuentasclaras.core.designsystem.components.appbar.DetailTopBar
 import com.matamau.cuentasclaras.core.designsystem.components.buttons.AppSegmentedControl
 import com.matamau.cuentasclaras.core.designsystem.components.buttons.ButtonPrimary
 import com.matamau.cuentasclaras.core.designsystem.components.buttons.SegmentedOption
 import com.matamau.cuentasclaras.core.designsystem.components.card.AppOutlinedCard
 import com.matamau.cuentasclaras.core.designsystem.components.chip.CategoryChip
 import com.matamau.cuentasclaras.core.designsystem.components.chip.InviteChip
-import com.matamau.cuentasclaras.core.designsystem.components.field.datefield.DateField
 import com.matamau.cuentasclaras.core.designsystem.components.field.SelectOption
+import com.matamau.cuentasclaras.core.designsystem.components.field.datefield.DateField
+import com.matamau.cuentasclaras.core.designsystem.components.field.filepicker.FilePickerField
 import com.matamau.cuentasclaras.core.designsystem.components.sheet.CategorySheet
 import com.matamau.cuentasclaras.core.designsystem.components.toggle.Toggle
 import com.matamau.cuentasclaras.core.designsystem.theme.AppTheme
-import com.matamau.cuentasclaras.core.designsystem.components.appbar.DetailTopBar
 import com.matamau.cuentasclaras.feature.expense.presentation.create.components.ExpenseAmountSection
 import com.matamau.cuentasclaras.feature.expense.presentation.create.components.ExpenseDetailsSection
 import com.matamau.cuentasclaras.feature.expense.presentation.create.components.ExpenseModal
@@ -85,6 +87,8 @@ fun CreateExpenseScreen(
     var activeModal by remember {
         mutableStateOf<ExpenseModalType?>(null)
     }
+
+    var receipts by rememberSaveable { mutableStateOf<List<String>>(emptyList()) }
 
     var inviteEmail by remember { mutableStateOf("") }
     var inviteName by remember { mutableStateOf("") }
@@ -202,6 +206,26 @@ fun CreateExpenseScreen(
                     }
                 }
             }
+
+            //TOMAR FOTO
+            item {
+                AppOutlinedCard(
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(
+                            AppTheme.spacing.md
+                        ), modifier = Modifier.padding(AppTheme.spacing.lg)
+                    ) {
+                        FilePickerField(
+                            photos = receipts,
+                            onPhotosChange = { receipts = it },
+                            maxPhotos = 3,
+                        )
+                    }
+                }
+            }
+
 
             //FECHA LIMITE
             item {
